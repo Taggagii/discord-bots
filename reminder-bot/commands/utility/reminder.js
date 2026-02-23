@@ -5,8 +5,9 @@ const {
   TextInputStyle,
   ActionRowBuilder,
 } = require('discord.js');
-
 const chrono = require('chrono-node/en');
+const { addReminder } = require('../../database');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -57,6 +58,7 @@ module.exports = {
 
   async handleModal(interaction) {
     const [, channelId] = interaction.customId.split(':');
+		const guildId = interaction.guildId;
 
     const title = interaction.fields.getTextInputValue('title');
     const content = interaction.fields.getTextInputValue('content');
@@ -78,7 +80,14 @@ module.exports = {
       });
     }
 
-		// todo : put this into the database and do some handling
+		await addReminder({
+			id: uuidv4(),
+			guildId,
+			channelId,
+			title,
+			content,
+			triggerDate: triggerDate.getTime()
+		})
 
     await interaction.reply({
       content: `Reminder set for <t:${Math.floor(triggerDate.getTime() / 1000)}:F>`,

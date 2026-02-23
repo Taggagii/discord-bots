@@ -2,6 +2,7 @@ require('dotenv').config()
 const { Client, Events, GatewayIntentBits, Collection, MessageFlags } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
+const { startReminderPolling } = require('./helpers/reminderHandler');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -30,6 +31,8 @@ subCommandFolders.forEach((subCommandFolder) => {
 
 client.once(Events.ClientReady, (readyClient) => {
 	console.log(`${readyClient.user.username} started up`);
+
+	startReminderPolling(client);
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {

@@ -7,7 +7,6 @@ const DEFAULT_DB = { reminders: [] };
 let db = { ...DEFAULT_DB };
 let modified = false; 
 
-// ensure file exists
 const ensureDatabase = () => {
   if (!fs.existsSync(DATABASE_FILE)) {
     fs.writeFileSync(DATABASE_FILE, JSON.stringify(DEFAULT_DB, null, 2));
@@ -57,6 +56,7 @@ const removeReminder = (id) => {
 loadReminders();
 
 module.exports = {
+	db,
   loadReminders,
   saveReminders,
   addReminder,
