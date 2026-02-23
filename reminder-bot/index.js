@@ -48,7 +48,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 		}
 
 		return;
-	} 
+	}
 
 	if (interaction.isModalSubmit()) {
 		const commandName = interaction.customId.split(':')[0];
@@ -66,18 +66,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
 		}
 
 		return;
-	
-
-
-
 	}
-		
-
 });
-
-
-
-
 
 
 if (!process.env.token) {

@@ -40,7 +40,7 @@ module.exports = {
 
     const timeInput = new TextInputBuilder()
       .setCustomId('time')
-      .setLabel('When? [ Type semi nicely :) ]')
+      .setLabel('When? (basically every format)')
       .setStyle(TextInputStyle.Short)
       .setRequired(true);
 
