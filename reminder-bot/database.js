@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DATABASE_FILE = path.join(__dirname, 'reminders.json');
-const DEFAULT_DB = { reminders: [] };
+const DEFAULT_DB = { reminders: [], oldReminders: [] };
 
 let db = { ...DEFAULT_DB };
 let modified = false; 
@@ -48,7 +48,16 @@ const addReminder = (reminder) => {
 };
 
 const removeReminder = (id) => {
+	const reminder = db.reminders.find(r => r.id === id);
+	if (!reminder) return Promise.resolve();
+	
   db.reminders = db.reminders.filter(r => r.id !== id);
+	db.oldReminders.push({
+		...reminder,
+		fulfilledAt: Date.now(),
+		fulfilledAtReadable: new Date,
+	});
+
   modified = true;
   return safeWrite();
 };

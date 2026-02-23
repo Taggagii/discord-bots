@@ -86,12 +86,15 @@ module.exports = {
 			channelId,
 			title,
 			content,
-			triggerDate: triggerDate.getTime()
+			triggerDate: triggerDate.getTime(),
+			triggerDateReadable: triggerDate,
 		})
 
-    await interaction.reply({
-      content: `Reminder set for <t:${Math.floor(triggerDate.getTime() / 1000)}:F>`,
-      ephemeral: true
-    });
+		const triggerTime = Math.floor(triggerDate.getTime() / 1000);
+
+		await interaction.reply({
+			content: `Reminder set for <t:${triggerTime}:F> (<t:${triggerTime}:T>)`,
+			ephemeral: true
+		});
   }
 };

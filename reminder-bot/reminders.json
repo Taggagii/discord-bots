@@ -1,3 +1,56 @@
 {
-  "reminders": []
+  "reminders": [
+    {
+      "id": "0e930512-c9c9-4d5f-879d-10e5e23f708d",
+      "guildId": "881395818681225267",
+      "channelId": "881395819192926221",
+      "title": "Add Bot",
+      "content": "add the reminder bot to the main server",
+      "triggerDate": 1771817400000,
+      "triggerDateReadable": "2026-02-23T03:30:00.000Z"
+    }
+  ],
+  "oldReminders": [
+    {
+      "id": "b751531b-4b05-47d2-8625-53b8452a4ef2",
+      "guildId": "881395818681225267",
+      "channelId": "881395819192926221",
+      "title": "hiya",
+      "content": "yoooo",
+      "triggerDate": 1771816945367,
+      "fulfilledAt": 1771816953536
+    },
+    {
+      "id": "065fde83-976d-40cb-9195-29099a0d6da1",
+      "guildId": "881395818681225267",
+      "channelId": "881395819192926221",
+      "title": "something",
+      "content": "else",
+      "triggerDate": 1771817074993,
+      "fulfilledAt": 1771817098502,
+      "fulfilledAtReadable": "2026-02-23T03:24:58.502Z"
+    },
+    {
+      "id": "df266de6-1159-4518-a5d0-c473042c867c",
+      "guildId": "881395818681225267",
+      "channelId": "881395819192926221",
+      "title": "testing",
+      "content": "thing",
+      "triggerDate": 1771817107940,
+      "triggerDateReadable": "2026-02-23T03:25:07.940Z",
+      "fulfilledAt": 1771817108517,
+      "fulfilledAtReadable": "2026-02-23T03:25:08.517Z"
+    },
+    {
+      "id": "83047e32-277f-46b9-b126-ca32e32ba28a",
+      "guildId": "881395818681225267",
+      "channelId": "881395819192926221",
+      "title": "piouy",
+      "content": "poiu",
+      "triggerDate": 1771817157188,
+      "triggerDateReadable": "2026-02-23T03:25:57.188Z",
+      "fulfilledAt": 1771817165143,
+      "fulfilledAtReadable": "2026-02-23T03:26:05.143Z"
+    }
+  ]
 }
