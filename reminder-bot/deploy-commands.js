@@ -3,6 +3,8 @@ const { REST, Routes } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const GLOBAL_DEPLOYMENT = process.argv.includes('global');
+
 const commands = [];
 
 const commandFolder = path.join(__dirname, 'commands')
@@ -29,8 +31,16 @@ const rest = new REST().setToken(process.env.token);
 
 (async () => {
 	try {
-		console.log(`STarted refreshing ${commands.length} slash commands`);
-		const data = await rest.put(Routes.applicationGuildCommands(process.env.botId, process.env.guildId), { body: commands });
+		console.log(`Started refreshing ${commands.length} slash commands`);
+
+		let data;
+		if (global) {
+			console.log("PERFORMING A GLOBAL DEPLOYMENT")
+			data = await rest.put(Routes.applicationCommands(process.env.botId), { body: commands });
+		} else {
+			data = await rest.put(Routes.applicationGuildCommands(process.env.botId, process.env.guildId), { body: commands });
+		}
+
 		console.log(`Successfully refreshed ${data.length} slash commands`);
 	} catch (error) {
 		console.error(error)
