@@ -6,7 +6,7 @@ const {
   ActionRowBuilder,
 } = require('discord.js');
 const chrono = require('chrono-node/en');
-const { addReminder } = require('../../database');
+const { addReminder } = require('../../database.js');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = {

@@ -2,7 +2,7 @@ require('dotenv').config()
 const { Client, Events, GatewayIntentBits, Collection, MessageFlags } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const { startReminderPolling } = require('./helpers/reminderHandler');
+const { startReminderPolling } = require('./helpers/reminderPolling.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 

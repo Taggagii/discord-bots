@@ -1,4 +1,4 @@
-const { db, removeReminder } = require('./database');
+const { db, removeReminder } = require('../database.js');
 
 const startReminderPolling = (client, pollInterval = 10 * 1000) => {
 	setInterval(async () => {
