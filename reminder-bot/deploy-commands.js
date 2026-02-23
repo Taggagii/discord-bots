@@ -34,7 +34,7 @@ const rest = new REST().setToken(process.env.token);
 		console.log(`Started refreshing ${commands.length} slash commands`);
 
 		let data;
-		if (global) {
+		if (GLOBAL_DEPLOYMENT) {
 			console.log("PERFORMING A GLOBAL DEPLOYMENT")
 			data = await rest.put(Routes.applicationCommands(process.env.botId), { body: commands });
 		} else {

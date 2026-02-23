@@ -33,20 +33,46 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
-	if (!interaction.isChatInputCommand()) return;
+	if (interaction.isChatInputCommand()) {
+		const command = interaction.client.commands.get(interaction.commandName);
 
-	const command = interaction.client.commands.get(interaction.commandName);
+		if (!command) {
+			console.error(`No matching command name: '${interaction.commandName}'`)
+			return;
+		}
 
-	if (!command) {
-		console.error(`No matching command name: '${interaction.commandName}'`)
+		try {
+			await command.execute(interaction);
+		} catch (error) {
+			console.error(error);
+		}
+
 		return;
-	}
+	} 
 
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
+	if (interaction.isModalSubmit()) {
+		const commandName = interaction.customId.split(':')[0];
+		const command = interaction.client.commands.get(commandName);
+
+		if (!command || !command.handleModal) {
+			console.error(`Invalid modal submit for command name '${interaction.commandName}'`);
+			return;
+		}
+
+		try {
+			return command.handleModal(interaction);
+		} catch (error) {
+			console.error(error);
+		}
+
+		return;
+	
+
+
+
 	}
+		
+
 });
 
 
